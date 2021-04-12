@@ -1,32 +1,36 @@
-import React, {useState ,useEffect} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function App(){
- const [data, setData] = useState([])
+function App() {
+  const [sound, setSound] = useState("")
+  const [color, setColor] = useState("#000000")
 
-useEffect(() => {
- fetch(`https://api.github.com/users`)
- .then((res) => res.json())
- .then(setData)
-}, [])
-
-if(data){
-  return(
-    <div>
-    <ul>
-      {data.map(user => (
-        <li key={user.id}>{user.login}</li>
-      ))}
-    </ul>
-    <button onClick={() => setData([])}>Remove Data</button>
-    </div>
+  const submit = (e) => {
+    e.preventDefault()
+    alert(`${sound} sounds like ${color}`)
+    setSound("")
+    setColor("#000000")
+  }
+  return (
+    <>
+      <form onSubmit={submit}>
+        <input 
+        value={sound} 
+        type="text" 
+        placeholder="Sound..."
+        onChange={(e) => setSound(e.target.value)}
+        />
+        <input 
+        value={color} 
+        type="color"
+        onChange={(e) => setColor(e.target.value)}
+        />
+        <button>Add</button>
+      </form>
+    </>
   )
 }
- return <p>No users</p>
-}
-
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
