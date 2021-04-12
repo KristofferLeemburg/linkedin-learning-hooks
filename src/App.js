@@ -1,7 +1,7 @@
-function App() {
+function App({name}) {
   return (
     <div className="App">
-      <h1>Learning Hooks</h1>
+      <h1>Learning {name}</h1>
     </div>
   );
 }
