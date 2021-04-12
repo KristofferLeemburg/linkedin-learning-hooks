@@ -1,7 +1,7 @@
-function App(props) {
+function App({name}) {
   return (
     <div className="App">
-      <h1>Learning {props.name}</h1>
+      <h1>Learning {name}</h1>
     </div>
   );
 }
